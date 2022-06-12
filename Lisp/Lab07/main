@@ -1,0 +1,140 @@
+;;;;
+;;;; Zachary Pataky
+;;;; main
+;;;; Created: 15 April 2021
+;;;; Last Modified: 23 April 2021
+;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [headList]
+;;;
+;;; When given a list of sublists, returns a list with just the first element
+;;;     of each sublist.
+;;;
+
+(defun headList (theList)
+    (mapcar #'car theList)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [lastElement]
+;;;
+;;; Returns the last element of a list.
+;;;
+
+(defun lastElement (theList)
+    (cond
+        ((= (length theList) 1) (car theList))
+        (t (lastElement (cdr theList)))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [allButLast]
+;;;
+;;; Returns a list containing all elements but the last one.
+;;; Returns NIL for lists with lengths of [1].
+;;;
+
+(defun allButLast (theList)
+    (cond
+        ((= (length theList) 1) NIL)
+        ((= (length theList) 2) (list (car theList)))
+        (t (cons (car theList) (allButLast (cdr theList))))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [tailList]
+;;;
+;;; When given a list of sublists, will return a list with just the last element
+;;;     of each sublist.
+;;;
+
+(defun tailList (theList)
+    (mapcar #'lastElement theList)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [removeApair]
+;;;
+;;; Takes a list of atoms and returns a list with the first pair of matching
+;;;     symbols removed.
+;;;
+
+(defun removeApair (theList)
+    (cond
+        ((<= (length theList) 1) theList)
+        ((eq (car theList) (car (cdr theList))) (cdr (cdr theList)))
+        (t (append (cons (car theList) NIL) (removeApair (cdr theList))))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [removePairs]
+;;;
+;;; When given a list of atoms, returns a list that has no two adjacent elements
+;;;     that are the same
+;;;
+
+(defun removePairs (theList)
+    (cond
+        ((= (length (removeApair theList)) (length theList)) theList)
+        (t (removePairs (removeApair theList)))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [rotate]
+;;;
+;;; When given a list of atoms, returns a list that rotates each element by one
+;;;     position.  The last atom should be in the first position.
+;;;
+
+(defun rotate (theList)
+    (cond
+        ((= (length theList) 1) theList)
+        (t (append (cons (lastElement theList) (allButLast theList))))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [spin]
+;;;
+;;; When given a list of atoms and a number, will rotate the last element of the
+;;;     list to the front of the list the number of times indicated.
+;;;
+
+;; Recursive Version
+
+;(defun spin (theList spinNum)
+;    (cond
+;        ((= spinNum 0) theList)
+;        (t (spin (rotate theList) (- spinNum 1)))
+;    )
+;)
+
+;; Iterative Version
+
+(defun spin (theList spinNum)
+    (do     ((spinsLeft spinNum (- spinsLeft 1)))
+            ((= spinsLeft 0) theList)
+            (setf theList (rotate theList))
+    )
+)

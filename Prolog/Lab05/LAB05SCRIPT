@@ -1,0 +1,45 @@
+Script started on Thu 01 Apr 2021 12:51:23 PM EDT
+]0;patakyz@brahe:~/CSC351/Lab/Lab05[?1034h[patakyz@brahe Lab05]$ gprolog
+GNU Prolog 1.4.4 (64 bits)
+Compiled Aug  8 2015, 17:13:35 with gcc
+By Daniel Diaz
+Copyright (C) 1999-2013 Daniel Diaz
+| ?- ['concord.pl']['concord.pl'].
+compiling /mnt0/stud/patakyz/CSC351/Lab/Lab05/concord.pl for byte code...
+/mnt0/stud/patakyz/CSC351/Lab/Lab05/concord.pl:107: warning: singleton variables [Word] for print_the_wordsHelperLinesHelper/1
+/mnt0/stud/patakyz/CSC351/Lab/Lab05/concord.pl compiled, 154 lines read - 11502 bytes written, 21 ms
+
+(3 ms) yes
+| ?- concord.
+Enter the file name: words.
+
+apple 2, 5
+ball 4
+black 7
+brown 7
+car 2
+cat 3
+dog 3, 4(2)
+down 8
+elephant 5
+grape 6
+grey 7
+hat 1
+left 8
+orange 6
+peach 5
+peacock 6
+plum 6
+red 7
+right 8
+toy 2
+up 1, 3(2), 5(3), 8
+
+true ? 
+
+(2 ms) yes
+| ?- 
+
+]0;patakyz@brahe:~/CSC351/Lab/Lab05[patakyz@brahe Lab05]$ exit
+
+Script done on Thu 01 Apr 2021 12:51:48 PM EDT

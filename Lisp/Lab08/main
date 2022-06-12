@@ -1,0 +1,175 @@
+;;;;
+;;;; Zachary Pataky
+;;;; main
+;;;; Created: 22 April 2021
+;;;; Last Modified: 10 May 2021
+;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [powerRec]
+;;; 
+;;; Recursively calculates [base^exponent], where [base] can be either a real 
+;;;     number or an integer, but [i] must be an integer.
+;;;
+
+(defun powerRec (base exponent)
+    (cond
+        ; Base Case: Returns 1 if [exponent] is 0.
+        ((= exponent 0) 1)
+        ; DIV and COM: Multiplies the base with a recursive call to [powerRec].
+        (t (* base (powerRec base (- exponent 1))))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [powerIter]
+;;;
+;;; Iteratively calculates [base^exponent], where [base] can be either a real
+;;;     number of an integer, but [exponent] must be an integer.
+;;;
+;;; NOTE: I tried using COND for this, but I kept getting errors.  Weird.
+;;;
+
+(defun powerIter (base exponent)
+    ; Creates a variable for iterative power evaluation.
+    (setf numList NIL)
+    ; Base Case: Simple power rule.
+    (if (= exponent 0)
+        1
+        ; Do-Loop that runs using [expoLeft] as a condition.  Adds values to a
+        ;     list, then evaluates that multiplies the values of the list to
+        ;     return the desired output.
+        (do    ((expoLeft exponent (- expoLeft 1)))
+               ((= expoLeft 0) (eval (cons '* numList)))
+               (setf numList (cons base numList))
+        )
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [minMaxRec]
+;;;
+;;; Receives a list of integers and will recursively return a result that is a 
+;;;     two-element list consisting of the smallest and largest values in the 
+;;;     original list.
+;;; Bring MIN and MAX atoms to the front of [theList], process, and return
+;;;     [theList].  During the processing, the first two atoms in the list are
+;;;     designated purely for the MIN/MAX atoms.  After the initial comparisons,
+;;;     most future comparisons are made using the third atom in the list.
+;;;
+
+(defun minMaxRec (theList)
+    (cond
+        ; Base Cases: An empty list returns NIL.  Lists of length [1] and [2]
+        ;     already have MIN/MAX values.
+        ((null theList) NIL)
+        ((= (length theList) 1) (cons (first theList) theList))
+        ((= (length theList) 2) theList)
+
+        ; Performs the second half of the function header comment.
+        ((> (first theList) (second theList))
+            (minMaxRec (cons (second theList)
+            (cons (first theList) (cddr theList)))))
+        ((> (first theList) (third theList))
+            (minMaxRec (cons (third theList) (cdr theList))))
+        ((< (second theList) (third theList))
+            (minMaxRec (cons (first theList) (cddr theList))))
+        (t (minMaxRec (cons (first theList)
+            (cons (second theList) (cdddr theList)))))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [minMaxIter]
+;;;
+;;; Receives a list of integers and will iteratively return a result that is a 
+;;;     two-element list consisting of the smallest and largest values in the 
+;;;     original list.
+;;;
+
+(defun minMaxIter (theList)
+    (list (minHelper theList) (maxHelper theList))
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [maxHelper]
+;;;
+;;; Helper-function that helps to identify the maximum element in a list.
+;;; Bring MAX element to the front of the [theList], process, and return
+;;;     [theList].
+;;;
+
+(defun maxHelper (theList)
+    (cond
+        ; Base Case: Returns NIL for empty lists.
+        ((null theList) NIL)
+        ((null (cdr theList)) (first theList))
+        ; Compares the first atom of [theList] with the following element.
+        ;     If the first atom is greater than the second atom, then the second
+        ;     atom is "skipped" using cddr.
+        ((> (first theList) (second theList))
+            (maxHelper (cons (first theList) (cddr theList))))
+        ; Simple iteration through the list.
+        (t (maxHelper (cdr theList)))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [minHelper]
+;;;
+;;; Helper-function that helps to identify the minimum element in a list.
+;;; Bring MIN element to the front of the [theList], process, and return
+;;;     [theList].
+;;;
+
+(defun minHelper (theList)
+    (cond
+        ; Base Case: Returns NIL for empty lists.
+        ((null theList) NIL)
+        ((null (cdr theList)) (first theList))
+        ; Compares the first atom of [theList] with the following element.
+        ;     If the first atom is less than the second atom, then the second
+        ;     atom is "skipped" using cddr.
+        ((< (first theList) (second theList))
+            (minHelper (cons (first theList) (cddr theList))))
+        ; Simple iteration through the list.
+        (t (minHelper (cdr theList)))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;                              ___
+;                            .';:;'.
+;                           /_' _' /\   __
+;                           ;a/ e= J/-'"  '.
+;                           \ ~_   (  -'  ( ;_ ,.
+;                            L~"'_.    -.  \ ./  )
+;                            ,'-' '-._  _;  )'   (
+;                          .' .'   _.'")  \  \(  |
+;                         /  (  .-'   __\{`', \  |
+;                        / .'  /  _.-'   "  ; /  |
+;                       / /    '-._'-,     / / \ (
+;                 __   / (_    ,;' .-'    / /  /_'-._
+;                   `"-'` ~`  ccc.'   __.','     \j\L\
+;                                    .='/|\7      
+;                                      ' `
+;                   "PRECIOUSSSS!! What has the nasty Bagginsess
+;                              got in it's pocketssss?"
+;
+; Citations: FIXME - Dumbass, you forgot us!  Find us!
+;

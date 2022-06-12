@@ -1,0 +1,45 @@
+Script started on Wed 21 Apr 2021 01:43:38 PM EDT
+]0;patakyz@brahe:~/CSC351/Lab07[?1034h[patakyz@brahe Lab07]$ clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo
+  I I I I I I I      8     8   8           8     8     o  8    8
+  I  \ `+' /  I      8         8           8     8        8    8
+   \  `-+-'  /       8         8           8      ooooo   8oooo
+    `-__|__-'        8         8           8           8  8
+        |            8     o   8           8     o     8  8
+  ------+------       ooooo    8oooooo  ooo8ooo   ooooo   8
+
+Welcome to GNU CLISP 2.49 (2010-07-07) <http://clisp.cons.org/>
+
+Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+Copyright (c) Bruno Haible, Marcus Daniels 1994-1997
+Copyright (c) Bruno Haible, Pierpaolo Bernardi, Sam Steingold 1998
+Copyright (c) Bruno Haible, Sam Steingold 1999-2000
+Copyright (c) Sam Steingold, Bruno Haible 2001-2010
+
+Type :h and hit Enter for context help.
+
+[1]> [?1034h(load "main")[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+;; Loading file main ...
+;; Loaded file main
+T
+[2]> (headList '((a b)[C[C[C[C[C (c d e)[C[C[C[C[C[C[C (g[Kf g)[C[C[C[C[C (h)[C[C[C (i j k)[C[C[C[C[C[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+(A C F H I)
+[3]> (last [KElement '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca)) ))v))[1P))b)) ))c)) ))d))
+D
+[4]> a[K(all/[KButLast '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca)) ))b)) ))c)) ))d))
+(A B C)
+[5]> (tail[K[K[K[K[K(allButLast '(a b c d))[C[C[C[C[C[C[1@lastElemen[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[CheadList '((a b) (c d e) (f g) (h) (i j k)))[C[1P[1P[1P[1P[1@t[1@a[1@i[1@l
+(B E G H K)
+[6]> (removeApair '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca)) ))b)) ))c)) ))c)) ))d)) ))d)) ))b)) ))e)) ))a))[C[C
+(A B D D B E A)
+[7]> (removePairs '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca)) ))b)) ))c)) ))c)) ))d)) ))d)) ))b)) ))e)) ))a))[C[C
+(A E A)
+[8]> (rotate '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca)) ))())c)) ))d))[C[C)[C[C[C[C[C ))e))
+(E A (C D))
+[9]> (spin '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca)) ))b)) ))c)) ))d)) ))e)) ))f)) ))g))[C )3)[C)[K
+(E F G A B C D)
+[10]> 
+Bye.
+]0;patakyz@brahe:~/CSC351/Lab07[patakyz@brahe Lab07]$ exit
+
+Script done on Wed 21 Apr 2021 01:45:59 PM EDT

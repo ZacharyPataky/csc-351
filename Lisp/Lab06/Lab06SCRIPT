@@ -1,0 +1,41 @@
+Script started on Thu 08 Apr 2021 01:09:17 PM EDT
+]0;patakyz@brahe:~/CSC351/Lab06[?1034h[patakyz@brahe Lab06]$ clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo
+  I I I I I I I      8     8   8           8     8     o  8    8
+  I  \ `+' /  I      8         8           8     8        8    8
+   \  `-+-'  /       8         8           8      ooooo   8oooo
+    `-__|__-'        8         8           8           8  8
+        |            8     o   8           8     o     8  8
+  ------+------       ooooo    8oooooo  ooo8ooo   ooooo   8
+
+Welcome to GNU CLISP 2.49 (2010-07-07) <http://clisp.cons.org/>
+
+Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+Copyright (c) Bruno Haible, Marcus Daniels 1994-1997
+Copyright (c) Bruno Haible, Pierpaolo Bernardi, Sam Steingold 1998
+Copyright (c) Bruno Haible, Sam Steingold 1999-2000
+Copyright (c) Sam Steingold, Bruno Haible 2001-2010
+
+Type :h and hit Enter for context help.
+
+[1]> [?1034h(load "main")[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+;; Loading file main ...
+;; Loaded file main
+T
+[2]> (average3 2 4 9)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+5
+[3]> (sum-list '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C1)) ))4)) ))6)) ))3)) ))9))[C[C
+23
+[4]> (average-list '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C2)) ))7)) ))4)) ))9)) ))8))[C[C
+6
+[5]> reverse[K[K[K[K[K[K[K(reverse-rest '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca)) ))b)) ))c)) ))d)) ))e)) ))f))[C[C
+(A F E D C B)
+[6]> (insert-it '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C5'()) '())[C[C1)) ))2)) ))6)) ))7)) ))9))[C[C
+(1 2 5 6 7 9)
+[7]> (insertion-sort '()[C[C)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C3)) ))7)) ))9)) ))2)) ))8)) ))5)) ))1)) ))4)) ))6))[C[C
+(1 2 3 4 5 6 7 8 9)
+[8]> 
+Bye.
+]0;patakyz@brahe:~/CSC351/Lab06[patakyz@brahe Lab06]$ exit
+
+Script done on Thu 08 Apr 2021 01:11:13 PM EDT

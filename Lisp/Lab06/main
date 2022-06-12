@@ -1,0 +1,120 @@
+;;;;
+;;;; Zachary Pataky
+;;;; main
+;;;; Created: 02 April 2021
+;;;; Last Modified: 06 May 2021
+;;;;
+
+;;;
+;;; [average3]
+;;;
+;;; Finds the average of any three numbers.
+;;;
+
+(defun average3 (num1 num2 num3)
+    ; Divides the sum of three numbers.
+    (/ (+ num1 num2 num3) 3)
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [sum-list]
+;;;
+;;; Adds up all of the numbers in a list.
+;;;
+
+(defun sum-list (theList)
+    (if (null theList)
+        ; Base Case: Returns 0 if [theList] is empty.
+        0
+        ; DIV + COM: Add the first atom of [theList] to the recursive call of
+        ;     the rest of the list.  This trickles down into individual atoms
+        ;     being summed together.
+        (+ (car theList) (sum-list (cdr theList)))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [average-list]
+;;;
+;;; Finds the average of any list of numbers of any length.
+;;;
+
+(defun average-list (theList)
+    (cond
+        ; Base Case: Returns [()] if [theList] is empty. 
+        ((null theList) theList)
+        ; Returns the division of the sum of [theList] with its length.
+        (t (/ (sum-list theList) (length theList)))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [reverse-rest]
+;;;
+;;; Reverses all but the first item on a list.
+;;; The helper function returns a new list that contains the elements of List
+;;;     beyond the first element in reverse order
+;;;
+;;; This one really sucks hard candy.
+;;;
+
+(defun reverse-rest (theList)
+    (append (list (car theList)) (reverse-rest-helper (cdr theList)))
+)
+
+(defun reverse-rest-helper (theList)
+    (cond
+        ((null theList) theList)
+        ((= (length theList) 1) (list (car theList)))
+        (t (append (reverse-rest-helper (cdr theList)) (list (car theList))))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [insert-it]
+;;;
+;;; Takes two parameters (an integer and a sorted list of integers), and will
+;;;     return a list with the new integer inserted into the correct place.
+;;;
+
+(defun insert-it (theInt theList)
+    (cond
+        ; Return [()] if [theList] is empty.
+        ((null theList) (list theInt))
+        ; If the current atom to be inserted is less than the first atom in
+        ;    [theList], add [theList] after [theInt].
+        ((< theInt (car theList)) (append (list theInt) theList))
+        ; Else: Mechanism that moves [theInt] down [theList] for comparisons.
+        (t (append (list (car theList)) (insert-it theInt (cdr theList))))
+    )
+)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;
+;;; [insertion-sort]
+;;;
+;;; Takes a list of integers and returns that list in increasing order.  Instead
+;;;     of sorting a full list in-place, it merely inserts each atom in the
+;;;     appropriate index of a fresh list.
+;;;
+
+(defun insertion-sort (theList)
+    (cond
+        ; Return [()] if [theList] is empty.
+        ((null theList) theList)
+        ; Applies [insert-it] to each element, ensuring that they're added to
+        ;     the correct positions in each list.  Appends the [insert-it] atoms
+        ;     to the rest of [theList] through [insertion-sort], maintaining
+        ;     cohesion throughout [theList].
+        (t (append (insert-it (car theList) (insertion-sort (cdr theList)))))
+    )
+)

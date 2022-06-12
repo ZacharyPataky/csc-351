@@ -1,0 +1,50 @@
+Script started on Thu 11 Mar 2021 12:31:09 PM EST
+]0;patakyz@brahe:~/CSC351/Lab/Lab04[?1034h[patakyz@brahe Lab04]$ gprolog
+GNU Prolog 1.4.4 (64 bits)
+Compiled Aug  8 2015, 17:13:35 with gcc
+By Daniel Diaz
+Copyright (C) 1999-2013 Daniel Diaz
+| ?- ['main.pl']['main.pl'].
+compiling /mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl for byte code...
+/mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl:21-22: warning: singleton variables [Punct] for process/2
+/mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl:27-29: warning: singleton variables [Punct] for process/2
+/mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl:33: warning: singleton variables [Punct] for process/2
+/mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl:36: warning: singleton variables [X,Y,Punct] for process/2
+/mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl:38: warning: singleton variables [Punct] for process/2
+/mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl:49: warning: singleton variables [Punct] for write_out/1
+/mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl:64: warning: singleton variables [W] for restsent/3
+/mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl:73: warning: singleton variables [C] for readword/3
+/mnt0/stud/patakyz/CSC351/Lab/Lab04/main.pl compiled, 99 lines read - 10852 bytes written, 21 ms
+
+(5 ms) yes
+| ?- talk.
+Enter the file name: sentences.
+spiderman is a hero.
+Understood
+droctopus is a villain.
+Understood
+is spiderman a hero?
+Yes
+a hero is a superhuman.
+Understood
+is spiderman a superhuman?
+Yes
+is droctopus a superhuman?
+Unknown
+
+true ? 
+
+yes
+| ?- 
+
+]0;patakyz@brahe:~/CSC351/Lab/Lab04[patakyz@brahe Lab04]$ more sentences.[K
+SpiderMan is a hero.
+DrOctopus is a villain.
+Is SpiderMan a hero?
+A hero is a SuperHuman.
+Is SpiderMan a SuperHuman?
+Is DrOctopus a SuperHuman?
+Stop.
+]0;patakyz@brahe:~/CSC351/Lab/Lab04[patakyz@brahe Lab04]$ exit
+
+Script done on Thu 11 Mar 2021 12:31:39 PM EST

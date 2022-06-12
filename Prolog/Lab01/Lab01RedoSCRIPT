@@ -1,0 +1,64 @@
+Script started on Tue 16 Mar 2021 10:49:06 PM EDT
+]0;patakyz@brahe:~/CSC351/Lab/Lab01[?1034h[patakyz@brahe Lab01]$ gprolog
+GNU Prolog 1.4.4 (64 bits)
+Compiled Aug  8 2015, 17:13:35 with gcc
+By Daniel Diaz
+Copyright (C) 1999-2013 Daniel Diaz
+| ?- ['people.pl']['people.pl'].
+compiling /mnt0/stud/patakyz/CSC351/Lab/Lab01/people.pl for byte code...
+/mnt0/stud/patakyz/CSC351/Lab/Lab01/people.pl compiled, 81 lines read - 5262 bytes written, 19 ms
+
+(2 ms) yes
+| ?- citizen_of(harold, unitedstates)(harold, unitedstates).
+
+true ? 
+
+yes
+| ?- citizen_of(helen, caan  nada)(helen, canada).
+
+true ? 
+
+yes
+| ?- sibling_of(harold, helen)(harold, helen).
+
+true ? 
+
+yes
+| ?- sibling_of(harold, harold)(harold, harold).
+
+no
+| ?- sibling_of(helen, harold)(helen, harold).
+
+true ? 
+
+(1 ms) yes
+| ?- sister_of(helen, harold)(helen, harold).
+
+true ? 
+
+yes
+| ?- brother_of(harold, helen)(harold, helen).
+
+true ? 
+
+yes
+| ?- aunt_of(helen, christopher)(helen, christopher).
+
+true ? 
+
+(1 ms) yes
+| ?- uncle_of(harold, sonya)(harold, sonya).
+
+true ? 
+
+yes
+| ?- parent_of(helen, arnold)(helen, arnold).
+
+yes
+| ?- 
+
+]0;patakyz@brahe:~/CSC351/Lab/Lab01[patakyz@brahe Lab01]$ All doe[Kne
+bash: All: command not found
+]0;patakyz@brahe:~/CSC351/Lab/Lab01[patakyz@brahe Lab01]$ exit
+
+Script done on Tue 16 Mar 2021 10:51:46 PM EDT
